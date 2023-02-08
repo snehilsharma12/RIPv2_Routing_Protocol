@@ -1,3 +1,11 @@
+/* 
+rip.java
+
+Implements the RIVv2 routing protocol
+
+@author: Snehil Sharma
+*/
+
 package ripv2;
 import java.util.Set;
 import java.util.Vector;
