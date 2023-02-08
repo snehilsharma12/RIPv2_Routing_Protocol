@@ -1,7 +1,7 @@
 /* 
 rip.java
 
-Implements the RIVv2 routing protocol
+Implements the RIPv2 routing protocol
 
 @author: Snehil Sharma
 */
