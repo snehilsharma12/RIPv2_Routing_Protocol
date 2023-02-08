@@ -1,10 +1,13 @@
-package ripv2;
+/**
+ * A routing table object
+ */
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.InetAddress;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class rtable implements Serializable{
 
@@ -20,15 +23,15 @@ public class rtable implements Serializable{
 
 
 
-    Vector<route> table;
+    ArrayList<route> table;
 
     rtable(){
 
-        table = new Vector<route>();
+        table = new ArrayList<route>();
     }
     
 
-    void add(Byte id, InetAddress router,InetAddress mask, InetAddress next_hop, int cost){
+    void add(int id, InetAddress router,InetAddress mask, InetAddress next_hop, int cost){
 
         table.add(new route(id, router,  mask, next_hop, cost));
     }
@@ -37,8 +40,8 @@ public class rtable implements Serializable{
         return table.get(i);
     }
 
-    Vector<route> get_vector(){
-        return this.table;
+    ArrayList<route> get_ArrayList(){
+        return table;
 
     }
 
@@ -75,11 +78,11 @@ public class rtable implements Serializable{
 
         if (this.has(router)){
 
-            for(int i=0; i<table.size(); i++){
+            for(int i=0; i<this.size(); i++){
 
-                if (router.equals( (table.get(i)).router )){
+                if (router.equals( (this.get(i)).router )){
     
-                    return table.get(i);
+                    return this.get(i);
                 }
     
                 else{
@@ -96,9 +99,9 @@ public class rtable implements Serializable{
 
         if (this.has(router)){
 
-            for(int i=0; i<table.size(); i++){
+            for(int i=0; i<this.size(); i++){
 
-                if (router.equals( (table.get(i)).router )){
+                if (router.equals( (this.get(i)).router )){
     
                     return i;
                 }
@@ -112,7 +115,7 @@ public class rtable implements Serializable{
         return -1;
     }
 
-    void add_self(Byte my_id, InetAddress my_ip, InetAddress my_mask){
+    void add_self(int my_id, InetAddress my_ip, InetAddress my_mask){
         
         this.add(my_id, my_ip,my_mask, my_ip, 0);    
     

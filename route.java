@@ -1,4 +1,7 @@
-package ripv2;
+/**
+ * A route object
+ */
+
 import java.net.InetAddress;
 
 public class route {
@@ -6,11 +9,15 @@ public class route {
         InetAddress router;
         InetAddress next_hop;
         int cost;
-        Byte id;
+        int id;
         InetAddress mask;
 
+        route(){
+            
+        }
+
     
-        route(Byte id, InetAddress router, InetAddress mask, InetAddress next_hop, int cost){
+        route(int id, InetAddress router, InetAddress mask, InetAddress next_hop, int cost){
             
             this.id = id;
             this.router = router;
